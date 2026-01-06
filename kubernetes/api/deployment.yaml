@@ -13,6 +13,7 @@ spec:
       labels:
         app: laravel-api
     spec:
+      serviceAccountName: s3-access 
       containers:
         - name: api
 #          image: "your-dockerhub-username/laravel-api:latest"
@@ -21,13 +22,9 @@ spec:
           envFrom:
             - secretRef:
                 name: app-env
-          volumeMounts:
-            - name: uploads
-              mountPath: /var/www/storage/uploads
-      volumes:
-        - name: uploads
-          persistentVolumeClaim:
-            claimName: uploads-efs-pvc
+          
+
+
 
 
 

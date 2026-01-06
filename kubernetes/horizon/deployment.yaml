@@ -13,6 +13,7 @@ spec:
       labels:
         app: horizon-workers
     spec:
+      serviceAccountName: s3-access 
       containers:
         - name: worker
  #         image: yourrepo/laravel-app:latest
@@ -20,10 +21,3 @@ spec:
           envFrom:
             - secretRef:
                 name: app-env
-          volumeMounts:
-            - name: uploads
-              mountPath: /var/www/storage/uploads
-      volumes:
-        - name: uploads
-          persistentVolumeClaim:
-            claimName: uploads-efs-pvc
